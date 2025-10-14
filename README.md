@@ -28,9 +28,13 @@ Players take turns dropping red and yellow pieces into the grid, the first to co
 
 ![Connect 4 Screenshot](./Images/Connect%204%20Game%20-%20screenshot.png)
 
+## Compatibility
+
+⚠️ Note: This version is optimized for **desktop** browsers only.
+Mobile and tablet support will be added in a future update.
 
 ## Live Demo 
 
-<a href="https://connect4gamejs.netlify.app/" target="_blank">Play here ↗</a>
+[Play here ↗](https://connect4gamejs.netlify.app/)
 
 
