@@ -26,7 +26,6 @@ function setGame() {
 
 			tile.addEventListener("click", setPiece);
 		}
-
 		boardRecords.push(rowRecords);
 	}
 }
@@ -67,11 +66,17 @@ function checkWinner() {
 	) {
 		return;
 	}
-
 	// Draw >>
 	// after checking in 4 directions...make sure there are no left empty tiles
 	if (boardRecords.every((row) => row.every((cell) => cell !== " "))) {
-		document.getElementById("winner").textContent = "It's a Draw! 🤝";
+		let winnerMsg = document.getElementById("winner-msg");
+		winnerMsg.classList.remove('red-wins', 'yellow-wins');
+		winnerMsg.textContent = "It's a Draw!";
+		winnerMsg.classList.add('draw');
+		winnerMsg.style.display = 'block';
+		setTimeout(() => {
+			winnerMsg.style.display = "none";
+		}, 3000);
 		gameOver = true;
 	}
 }
@@ -180,9 +185,12 @@ function highlightWinner(coords) {
 }
 
 function setWinner(r, c) {
+
 	let winnerMsg = document.getElementById("winner-msg");
+	winnerMsg.classList.remove("red-wins", "yellow-wins");
+
 	if (boardRecords[r][c] === playerRed) {
-		winnerMsg.textContent = "Red Wins 🎉";
+		winnerMsg.textContent = "Red Wins!";
 		winnerMsg.classList.add("red-wins");
 		winnerMsg.style.display = "block";
 		setTimeout(() => {
@@ -190,13 +198,14 @@ function setWinner(r, c) {
 		}, 3000);
 		gameOver = true;
 	} else {
-		winnerMsg.textContent = "Yellow Wins 🎉";
+		winnerMsg.textContent = "Yellow Wins!";
 		winnerMsg.classList.add("yellow-wins");
 		winnerMsg.style.display = "block";
 		setTimeout(() => {
 			winnerMsg.style.display = "none";
 		
 		}, 3000);
+
 		gameOver = true;
 	}
 }

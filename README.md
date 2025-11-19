@@ -12,7 +12,8 @@ Players take turns dropping red and yellow pieces into the grid, the first to co
 - **Dynamic** winner message display  
 - **↻ Reset** button to start a new game instantly  
 - Retro pixel font with a **playful interface**  
-- Subtle dancing title animation using **CSS keyframes**   
+- Subtle dancing title animation using **CSS keyframes**  
+- **Fully Responsive**: adapts perfectly to all screen sizes, including mobile portrait/landscape rotation, tablets, and desktops.
 
 ---
 
@@ -28,10 +29,6 @@ Players take turns dropping red and yellow pieces into the grid, the first to co
 
 ![Connect 4 Screenshot](./Images/Connect%204%20Game%20-%20screenshot.png)
 
-## Compatibility
-
-⚠️ Note: This version is optimized for **desktop** browsers only.
-Mobile and tablet support will be added in a future update.
 
 ## Live Demo 
 
