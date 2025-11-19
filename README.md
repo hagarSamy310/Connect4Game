@@ -27,7 +27,7 @@ Players take turns dropping red and yellow pieces into the grid, the first to co
 
 ## Preview
 
-![Connect 4 Screenshot](./Images/Connect%204%20Game%20-%20screenshot.png)
+![Connect 4 Screenshot](./Images/screenshot.png)
 
 
 ## Live Demo 
