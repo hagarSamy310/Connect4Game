@@ -18,6 +18,7 @@
 }
 
 body {
+	min-height: 100vh;
 	min-height: 100svh;
 	display: flex;
 	flex-direction: column;
@@ -29,6 +30,10 @@ body {
 	text-align: center;
 	padding: 1.5rem;
 	overflow-x: hidden;
+}
+
+button {
+	-webkit-tap-highlight-color: transparent;
 }
 
 /* HEADER & LABEL */
@@ -90,18 +95,25 @@ button:hover {
 /* WINNER MESSAGE */
 #winner-msg {
 	position: absolute;
-	margin: auto;
-	background-color: var(--bg-color);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(0, 0, 0, 0.7);
 	border: 3px solid var(--board-color);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 	padding: 0.9rem;
 	border-radius: 8px;
 	font-size: clamp(1.5rem, 2vw, 2rem);
 	text-transform: uppercase;
-	letter-spacing: 2px;
-	animation: bounceIn 1s ease-in-out;
+	letter-spacing: 0.2rem;
+	animation: bounceIn 0.3s ease-in-out;
 	display: none;
 	white-space: nowrap;
+}
+
+/* Winning tiles animation */
+.tile.winning {
+	box-shadow: 2px 5px 5px rgb(255, 255, 255);
 }
 
 /* TILES */
@@ -132,15 +144,15 @@ button:hover {
 /* ANIMATIONS */
 @keyframes bounceIn {
 	0% {
-		transform: scale(0);
+		transform: translate(-50%, -50%) scale(0);
 		opacity: 0;
 	}
 	60% {
-		transform: scale(1.1);
+		transform: translate(-50%, -50%) scale(0);
 		opacity: 1;
 	}
 	100% {
-		transform: scale(1);
+		transform: translate(-50%, -50%) scale(0);
 	}
 }
 

@@ -178,7 +178,8 @@ function checkDiagonalDown() {
 }
 function highlightWinner(coords) {
 	coords.forEach(([r, c]) => {
-		document.getElementById(`${r}-${c}`).style.boxShadow = "2px 5px 5px white";
+		let tile = document.getElementById(`${r}-${c}`);
+		tile.classList.add('winning');
 	});
 
 	setWinner(coords[0][0], coords[0][1]);
