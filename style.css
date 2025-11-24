@@ -28,11 +28,11 @@ body {
 	font-family: "Press Start 2P", monospace;
 	color: #111;
 	text-align: center;
-	padding: 1.5rem;
+	padding: 1rem 0.5rem;
 	overflow-x: hidden;
 }
 
-button {
+button, .tile {
 	-webkit-tap-highlight-color: transparent;
 }
 
@@ -43,7 +43,7 @@ button {
 	justify-content: center;
 	align-items: center;
 	gap: clamp(0.6rem, 4vw, 1.5rem);
-	margin-bottom: 1.2rem;
+	margin-bottom: 1rem;
 	white-space: nowrap;
 }
 
@@ -55,12 +55,12 @@ button {
 h1 {
 	font-size: clamp(1rem, 5vw, 2rem);
 	color: var(--board-color);
-	animation: bounceIn 1s ease-in-out;
+	animation: bounceInText 1s ease-in-out;
 }
 
 /* Reset BUTTON */
 button {
-	font-size: clamp(0.5rem, 3vw, 1.5rem);
+	font-size: clamp(1rem, 3vw, 1.5rem);
 	background-color: var(--red);
 	color: white;
 	border: none;
@@ -68,12 +68,13 @@ button {
 	border-radius: 50%;
 	font-weight: bold;
 	cursor: pointer;
+	text-align: center;
 	transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
+button:active {
 	background-color: var(--board-color);
-	transform: rotate(-50deg);
+	transform: rotate(-180deg);
 }
 
 /* GAME BOARD */
@@ -85,35 +86,36 @@ button:hover {
 	gap: 6px;
 	width: min(100%, 500px);
 	aspect-ratio: 7/6;
-	background-color: var(--board-color);
+	background: linear-gradient(to bottom, var(--board-color), #0f172a);
 	border: 5px solid var(--tile-border);
 	border-radius: 16px;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 	position: relative;
+	margin: 0 auto;
 }
 
-/* WINNER MESSAGE */
+/* WINNER MESSAGE AND FEEDBACK */
 #winner-msg {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: rgba(0, 0, 0, 0.7);
-	border: 3px solid var(--board-color);
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+	background-color: rgb(0, 0, 0, 0.5);
+	border: 4px solid var(--board-color);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 	padding: 0.9rem;
 	border-radius: 8px;
-	font-size: clamp(1.5rem, 2vw, 2rem);
+	font-size: clamp(1rem, 1rem + 0.5vw, 2rem);
 	text-transform: uppercase;
 	letter-spacing: 0.2rem;
-	animation: bounceIn 0.3s ease-in-out;
+	animation: bounceInModal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	display: none;
 	white-space: nowrap;
+	z-index: 10;
 }
 
-/* Winning tiles animation */
 .tile.winning {
-	box-shadow: 2px 5px 5px rgb(255, 255, 255);
+	box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
 /* TILES */
@@ -122,7 +124,11 @@ button:hover {
 	border-radius: 50%;
 	border: 4px solid var(--tile-border);
 	background-color: var(--tile-empty);
-	transition: transform 0.2s ease;
+	box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.3),
+							inset -5px -5px 15px rgba(255, 255, 255, 0.1);
+
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	cursor: pointer;
 }
 
 .tile:hover {
@@ -142,17 +148,36 @@ button:hover {
 }
 
 /* ANIMATIONS */
-@keyframes bounceIn {
+@keyframes bounceInText {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+	60% {
+		transform: scale(1.1);
+		opacity: 1;
+	}
+	80% {
+		transform: scale(0.95);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes bounceInModal {
 	0% {
 		transform: translate(-50%, -50%) scale(0);
 		opacity: 0;
 	}
 	60% {
-		transform: translate(-50%, -50%) scale(0);
+		transform: translate(-50%, -50%) scale(1.1);
 		opacity: 1;
 	}
+	80% {
+		transform: translate(-50%, -50%) scale(0.95);
+	}
 	100% {
-		transform: translate(-50%, -50%) scale(0);
+		transform: translate(-50%, -50%) scale(1);
 	}
 }
 
@@ -177,12 +202,26 @@ button:hover {
 	}
 }
 
+/* MEDIA QUERIES */
+
+@media (hover: hover) and (pointer: fine) {
+	button:hover {
+		background-color: var(--board-color);
+		transform: rotate(-360deg);
+	}
+}
+
 @media (max-width: 400px) {
+	button {
+		padding: 3px 6px;
+	}
 	#board {
 		padding: 0.5rem;
+		border-width: 3px;
+		height: min-content;
+		width: min(95vw, 500px);
 	}
 	#winner-msg {
-		/* width: min(100%, 200px); */
 		font-size: 0.8rem;
 	}
 }
@@ -193,18 +232,19 @@ button:hover {
 	}
 	h1,
 	button {
-		font-size: max(1.2rem, 5vh);
+		font-size: max(1rem, 5vh);
 	}
 	.circles {
 		font-size: max(1.8rem, 8vh);
 	}
 	body {
 		padding-top: 0.8rem;
-		overflow-y: hidden;
+		overflow: hidden;
 	}
 	#board {
 		max-height: 80vh;
-		max-width: 100vw;
-		width: min(100vw, 80vh * (7/6));
+		max-width: 95vw;
+		width: min(95vw, 80vh * (7/6));
+		margin: 0 auto;
 	}
 }

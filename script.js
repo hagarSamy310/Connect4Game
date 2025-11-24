@@ -43,7 +43,7 @@ function setPiece() {
 	}
 	boardRecords[row][col] = currPlayer;
 	let tile = document.getElementById(`${row}-${col}`);
-
+	
 	if (currPlayer === playerRed) {
 		tile.style.backgroundColor = "red";
 		currPlayer = playerYellow;
