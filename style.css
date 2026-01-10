@@ -100,7 +100,7 @@ button:active {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: rgba(255, 253, 253, 0.3);
+	background-color: rgba(0, 0, 0, 0.9);
 	border: 4px solid var(--board-color);
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
 	padding: 0.9rem;
@@ -227,16 +227,16 @@ button:active {
 	}
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
 	.label {
 		margin: 0.3rem;
 	}
 	h1,
 	button {
-		font-size: max(0.8rem, 4vh);
+		font-size: max(0.7rem, 4vh);
 	}
 	.circles {
-		font-size: max(1.5rem, 6vh);
+		font-size: max(1.1rem, 4vh);
 	}
 	body {
 		padding-top: 0.5rem;
