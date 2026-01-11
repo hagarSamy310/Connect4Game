@@ -239,15 +239,18 @@ button:active {
 		font-size: max(1.1rem, 4vh);
 	}
 	body {
-		padding-top: 0.5rem;
+		padding: 0.3rem;
 		overflow: hidden;
 		justify-content: flex-start;
 	}
 	#board {
-		max-height: 80vh;
+		max-height: 70vh;
 		max-width: 95vw;
-		width: min(95vw, 80vh * (7/6));
+		width: min(95vw, 70vh * (7/6));
 		margin: 0 auto;
-		padding: 0.7rem;
+		padding: 0.5rem;
+	}
+	.circles {
+		display: none;
 	}
 }
