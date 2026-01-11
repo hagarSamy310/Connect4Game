@@ -235,6 +235,10 @@ button:active {
 	button {
 		font-size: max(0.7rem, 4vh);
 	}
+
+	button {
+		padding: 3px 6px;
+	}
 	.circles {
 		font-size: max(1.1rem, 4vh);
 	}
@@ -250,7 +254,5 @@ button:active {
 		margin: 0 auto;
 		padding: 0.5rem;
 	}
-	.circles {
-		display: none;
-	}
+
 }
