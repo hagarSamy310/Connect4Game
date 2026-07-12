@@ -32,6 +32,6 @@ Players take turns dropping red and yellow pieces into the grid, the first to co
 
 ## Live Demo 
 
-[Play here ↗](https://connect4gamejs.netlify.app/)
+[Play here ↗](https://connect4game.hagarsamy.workers.dev/)
 
 
